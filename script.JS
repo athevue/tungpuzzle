@@ -65,56 +65,59 @@ function simpleGame(){
 
 
 /* clicking tiles */
-
 function clickTile(row,column){
 
     var tile=document.getElementById("cell"+row+column).className;
 
     if(tile!="tile16"){
 
-    /* right */
+        // RIGHT
+        if(column<4){
+            if(document.getElementById("cell"+row+(column+1)).className=="tile16"){
+                swapTiles("cell"+row+column,"cell"+row+(column+1));
+                moves++;
+                document.getElementById("moves").innerHTML=moves;
+                setTimeout(()=>{Win()},200);
+                return;
+            }
+        }
 
-    if(column<4){
-    if(document.getElementById("cell"+row+(column+1)).className=="tile16"){
-    swapTiles("cell"+row+column,"cell"+row+(column+1));
-    moves++;
+        // LEFT
+        if(column>1){
+            if(document.getElementById("cell"+row+(column-1)).className=="tile16"){
+                swapTiles("cell"+row+column,"cell"+row+(column-1));
+                moves++;
+                document.getElementById("moves").innerHTML=moves;
+                setTimeout(()=>{Win()},200);
+                return;
+            }
+        }
+
+        // ABOVE
+        if(row>1){
+            if(document.getElementById("cell"+(row-1)+column).className=="tile16"){
+                swapTiles("cell"+row+column,"cell"+(row-1)+column);
+                moves++;
+                document.getElementById("moves").innerHTML=moves;
+                setTimeout(()=>{Win()},200);
+                return;
+            }
+        }
+
+        // BELOW
+        if(row<4){
+            if(document.getElementById("cell"+(row+1)+column).className=="tile16"){
+                swapTiles("cell"+row+column,"cell"+(row+1)+column);
+                moves++;
+                document.getElementById("moves").innerHTML=moves;
+                setTimeout(()=>{Win()},200);
+                return;
+            }
+        }
+
     }
+
 }
-
-    /* left */
-
-    if(column>1){
-        if(document.getElementById("cell"+row+(column-1)).className=="tile16"){
-        swapTiles("cell"+row+column,"cell"+row+(column-1));
-        moves++;
-        }
-    }
-
-    /* above */
-
-    if(row>1){
-        if(document.getElementById("cell"+(row-1)+column).className=="tile16"){
-        swapTiles("cell"+row+column,"cell"+(row-1)+column);
-        moves++;
-        }
-    }
-
-    /* below */
-
-    if(row<4){
-        if(document.getElementById("cell"+(row+1)+column).className=="tile16"){
-        swapTiles("cell"+row+column,"cell"+(row+1)+column);
-        moves++;
-        }
-    }
-
-    document.getElementById("moves").innerHTML=moves;
-
-    setTimeout(()=>{Win()},200);
-
-        }
-
-    }
 
 
 /* check win */
