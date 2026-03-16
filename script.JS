@@ -58,7 +58,7 @@ function clickTile(row, column) {
             swapTiles("cell" + row + column, "cell" + row + (column + 1));
             moves++;
             document.getElementById("moves").innerHTML = moves;
-            setTimeout(() => { Win() }, 200); // check if player won
+            setTimeout(() => { Win() }, 200); // check if player won and delay mechanism to prevent multiple alerts
             return;
         }
 
