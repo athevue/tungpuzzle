@@ -46,7 +46,7 @@ td{
 
 /* empty tile */
 .tile16{
-background:white;
-background-image:none;
-cursor:default;
+    background:white;
+    background-image:none;
+    cursor:default;
 }
